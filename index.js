@@ -6,7 +6,11 @@ require('./db/connection')
 
 const pfServer = express()
 
-pfServer.use(cors())
+pfServer.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}))
 pfServer.use(express.json())
 pfServer.use(router)
 
